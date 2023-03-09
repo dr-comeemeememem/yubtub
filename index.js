@@ -12,10 +12,10 @@ var server = http.createServer(function (url, abc) {
     .then(return => a(return))
     .catch(err => console.log(err));
   abc.writeHead(200, { 'Content-Type': JSON.parse(JSON.stringify(b.header).replace("-", "_")).content_type });
-  abc.write(b.data);
+  if(new Set(JSON.parse(JSON.stringify(b.header).replace("-", "_")).content_type.split("")).has("text/") || new Set(JSON.parse(JSON.stringify(b.header).replace("-", "_")).content_type.split("")).has("application/"));
+  abc.write(b.data.replace("https://youtube.com", "youtube.altk.xyz"));
   abc.end();
 });
 
-server.listen(442); // https
-//server.listen(60); // http
-//server.listen(69); // noice
+server.listen(443); // https
+server.listen(80); // http
